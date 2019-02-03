@@ -1,0 +1,474 @@
+\documentclass[letterpaper,11pt]{article}
+
+% Soporte para los acentos.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}    
+% Idioma español.
+\usepackage[spanish,mexico, es-tabla]{babel}
+% Soporte de símbolos adicionales (matemáticas)
+\usepackage{multirow}
+\usepackage{amsmath}		
+\usepackage{amssymb}		
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{enumerate}
+% Modificamos los márgenes del documento.
+\usepackage[lmargin=2cm,rmargin=2cm,top=2cm,bottom=2cm]{geometry}
+
+\title{Autómatas y Lenguajes Formales \\ Tarea 0}
+\author{Rubí Rojas Tania Michelle}
+\date{Martes 21 de agosto de 2018}
+
+\begin{document}
+    \maketitle
+    
+    \begin{enumerate}
+        
+        % Ejercicio 1.
+        \item Busca los axiomas de Zermelo-Frankel de la Teoría de Conjuntos y
+        cópialos aquí. \\
+        \textsc{Solución:}
+        
+        \begin{itemize}
+            
+            % Axioma 1. 
+            \item \textbf{Axioma 1} (de existencia). Hay un conjunto que no
+            tiene elementos.
+            
+            % Axioma 2.
+            \item \textbf{Axioma 2} (de extensión). Si todo elemento de $A$ es
+            un elemento de $B$ y todo elemento de $B$ es un elemento de $A$,
+            entonces $A = B$.
+            
+            % Axioma 3. 
+            \item \textbf{Axioma 3} (Esquema de comprensión). Sea $P$ una
+            fórmula. Para cualquier conjunto $A$ hay un conjunto $B$ tal que 
+            $x \in B$ si y sólo si $x \in A$ y satisface la fórmula $P$.
+            
+            % Axioma 4.
+            \item \textbf{Axioma 4} (del Par). Para cualesquiera conjuntos $A$ 
+            y $B$ hay un conjunto $C$ tal que $x \in C$ si y sólo si $x = A$ o
+            $x \in B$.
+            
+            % Axioma 5.
+            \item \textbf{Axioma 5} (de unión). Para cualquier conjunto $S$,
+            existe un conjunto $U$ tal que $x \in U$ si y sólo si $x \in X$
+            para algún $X \in S$.
+            
+            % Axioma 6.
+            \item \textbf{Axioma 6} (del Conjunto Potencia). Para cualquier 
+            conjunto $X$, existe un conjunto $S$ tal que $A \in S$ si y sólo si
+            $A \subseteq X$.
+            
+            % Axioma 7.
+            \item \textbf{Axioma 7} (de Fundación). En cada conjunto no vacío
+            $A$ existe $u \in A$ tal que $u$ y $A$ son ajenos.
+            
+            % Axioma 8.
+            \item \textbf{Axioma 8} (de Infinitud). Existe un conjunto
+            inductivo.
+        
+        \end{itemize}
+        
+        % Ejercicio 2.
+        \item Busca el axioma de elección y cópialo aquí. \\ 
+        \textsc{Solución:} "Toda familia de conjuntos no vacíos posee una
+        función de elección."
+        
+        % Ejercicio 3.
+        \item ¿Todos los conjuntos forman un conjunto? Justifica tu respuesta.\\
+        \textsc{Solución:} Se puede explicar con un ejemplo análogo: un
+        conjunto que consta de libros no es miembro de sí mismo porque el
+        conjunto en sí no es un libro. Así es más claro ver que todos los
+        conjuntos \textbf{no} forman un conjunto, ya que el conjunto de todos
+        los conjuntos pertenece a este conjunto pero a su vez no pertenece a
+        este conjunto. Esto es una paradoja.
+        
+        % Ejercicio 4.
+        \item Sean $A$ := \{a,b,c,d\}, $B$ := \{1,2,3\}
+        
+        \begin{itemize}
+            
+            % Ejercicio 4.1
+            \item Da una relación de $A$ en $B$ que no sea función. \\
+            \textsc{Solución:} $R$ = \{(a,1), (a,2)\}
+            
+            % Ejercicio 4.2
+            \item Da una relación de $A$ en $B$ que sea una función
+            suprayectiva. \\ 
+            \textsc{Solución:} $S$ = \{(a,1), (b,1), (c,2), (d,3)\}
+            
+            % Ejercicio 4.3
+            \item Da una relación de $A$ en $B$ que sea una función pero que no
+            sea suprayectiva. \\ 
+            \textsc{Solución:} $T$ = \{(a,1), (b,1), (c,2), (d,2)\} 
+            
+            % Ejercicio 4.4
+            \item ¿Puede haber una función de $A$ en $B$ inyectiva? Justifica
+            tu respuesta. \\
+            \textsc{Solución:} No, ya que para que exista una función inyectiva
+            entonces los elementos del dominio tienen que dar con elementos
+            distintos del codominio al aplicar la función, pero el conjunto $A$
+            tiene 4 elementos mientras que el conjunto $B$ tiene 3 elementos;
+            por lo tanto no es posible que los elementos del dominio vayan a 
+            dar a elementos distintos del codomonio ya que la cardinalidad de 
+            $A$ es mayor que la de $B$.
+            
+        \end{itemize}
+        
+        % Ejercicio 5.
+        \item ¿Cuál es la diferencia entre un orden total y un buen orden? \\
+        \textsc{Solución:} Un órden es total si cualesquiera dos elementos de
+        $A$ son comparables, lo que significa que no necesariamente tiene que
+        existir un elemento mínimo; mientras que un buen órden es un orden
+        lineal (total) donde cada conjunto no vacío de $A$ tiene un elemento
+        mínimo. Un ejemplo claro de esta diferencia es el órden de los números
+        enteros ya que es un órden total pero no es un buen órden debido a la
+        falta de un elemento mínimo.
+        
+        % Ejercicio 6.
+        \item Sea $A$ un conjunto, la \textit{potencia} de $A$ se define como:
+        
+        \begin{center}
+            $\mathcal{P}$($A$) := \{$B$ | $B$ $\subseteq$ $A$\}
+        \end{center}
+        
+        Demuestra que $|A| < |\mathcal{P}(A)|$.
+        
+        \begin{proof}
+            Es claro que la función $g: A \longrightarrow \mathcal{P}(A)$
+            definida por $g(a) = \{a\}$ es inyectiva. Ahora, sea
+            $f: A \longrightarrow \mathcal{P}(A)$ cualquier función. Veamos que 
+            $f$ no puede ser suprayectiva. \\
+            Sea $A_{0} = \{x \in A$ $|$ $x \notin f(x)\}$. Afirmamos que $A_{0}$
+            no pertenece al rango de $f$. Supongamos lo contrario, es decir,
+            que para alguna $x \in A$, $f(x) = A_{0}$. Existen dos
+            posibilidades:
+            
+            \begin{itemize}
+                
+                \item[i)] Si $x \in A_{0}$, por definición de $A_{0}$, entonces
+                $x \notin f(x) = A_{0}$. Por lo tanto, $x \in A_{0}$ y 
+                $x \notin A_{0}$, lo cual es una contradicción.
+                
+                \item[ii)] Si $x \notin A_{0}$ entonces $x \in f(x) = A_{0}$.
+                Por lo tanto, $x \in A_{0}$ y $x \notin A_{0}$, lo cual es una
+                contradicción.
+            \end{itemize}
+            
+            En ambos casos se llega a una contradicción, así $A_{0}$ no
+            pertenece a la imagen de $f$ y por lo tanto $f$ no es suprayectiva.
+            
+        \end{proof}
+        
+        % Ejercicio 7.
+        \item Busca las siguientes definiciones y cópialas aquí:
+        
+        \begin{itemize}
+            
+            % Definición 1$. 
+            \item Relación de equivalencia \\
+            \textsc{Definición:} Dado un conjunto no vacío $A$, decimos que una
+            relación $R$ es una relación de equivalencia sobre $A$ si y sólo si
+            $R$ es reflexiva sobre $A$, es simétrica y es transitiva. Además,
+            si a $R$ b, es común decir que a es equivalente a b.
+            
+            % Definición 2.
+            \item Partición de un conjunto \\
+            \textsc{Definición:} Sean $A$ e $I$ dos conjuntos no vacíos tales
+            que para cada $i \in I$, existe un subconjunto $A_i$ de $A$.
+            Decimos que el conjunto
+            
+            \begin{center}
+                $P$ = \{$A_i : i \in I$\}
+            \end{center}
+            
+            es una partición de $A$ si y sólo si
+            
+            \begin{itemize}
+                
+                \item[i)] para toda $i \in I$, $A_i \neq \varnothing$
+                \item[ii)] si $i, j \in I$ son tales que $A_i \neq A_j$,
+                entonces $A_i \cap A_j = \varnothing$
+                \item[iii)] para toda $a \in A$, hay $i \in I$ tal que
+                $a \in A_i$
+                
+            \end{itemize}
+            
+            % Definición 3.
+            \item Conjunto cociente \\
+            \textsc{Definición:} Sea A un conjunto no vacío y $\sim$ una
+            relación de equivalencia sobre $A$. El conjunto cociente de $A$
+            bajo $\sim$, denotado $A /\sim$ es el conjunto de todas las clases
+            de equivalencia inducidas por $\sim$.
+            Es decir,
+            
+            \begin{center}
+                $A/\sim$ = \{$[a]$: $a \in A$\}
+            \end{center}
+        
+        \end{itemize}
+        
+        % Ejercicio 8.
+        \item Sea $A := \{x_{1}, x_{2}, x_{3}, x_{4}\}$. Considera la siguiente
+        relación en $\mathcal{P}(A): X \sim Y$ si y sólo si $|X| = |Y|$. Utiliza
+        las definiciones del inciso anterior:
+        
+        \begin{itemize}
+            
+            % Ejercicio 8.1
+            \item Muestra que $\sim$ es una relación de equivalencia en
+            $\mathcal{P}(A)$.
+            \begin{proof}
+                Veamos que $\sim$ es reflexiva. Sea $X$ un conjunto. Como 
+                $X = X$ entonces $|X| = |X|$, por lo que $\sim$ es reflexiva. 
+                Ahora, veamos que $\sim$ es simétrica. Sean $X$ y $Y$ conjuntos
+                tales que $X \sim Y$. Por definición tenemos que $|X| = |Y|$ y
+                por la conmutatividad de la igualdad tenemos que $|Y| = |X|$.
+                Por lo tanto, $\sim$ es simétrica. Finalmente, veamos que 
+                $\sim$ es transitiva. Sean $X$, $Y$ y $Z$ conjuntos tales que 
+                $X \sim Y$ y $Y \sim Z$. Entonces, por definición, tenemos 
+                que $|X| = |Y|$ y $|Y| = |Z|$, respectivamente. Por la 
+                transitividad de la igualdad obtenemos que $|X| = |Z|$. Por lo
+                tanto, $\sim$ es transitiva. \\
+                Por lo tanto, $\sim$ es una relación de equivalencia.
+            \end{proof}
+            
+            % Ejercicio 8.2
+            \item ¿Cuántas clases de equivalencia hay bajo esta relación? \\
+            \textsc{Solución:} Hay 5 clases de equivalencia, una por cada
+            cardinalidad que puede arrojar la relación, es decir, puede ser que
+            $|A| = 4$, $|A| = 3$, $|A| = 2$, $|A| = 1$, $|A| = 0$, de aquí 
+            salen las diferentes clases de equivalencia.
+            
+            % Ejercicio 8.3
+            \item ¿Cuál es el conjunto cociente inducido por esta relación de
+            equivalencia? \\ 
+            \textsc{Solución:} El conjunto cociente inducido por esta relación
+            de equivalencia es el conjunto potencia, es decir, 
+            $A/\sim $ $ = \mathcal{P}(A)$.
+        
+        \end{itemize}
+        
+        % Ejercicio 9.
+        \item Demuestra que toda relación de equivalencia induce una partición,
+        y que toda partición induce una relación de equivalencia.
+        
+        \begin{proof}
+            Primero veamos que toda relación de equivalencia induce una 
+            partición. Sea $\sim$ una relación de equivalencia definida en 
+            un conjunto $A \neq \varnothing$. Entonces
+           
+            \begin{itemize}
+                
+                % Primera propiedad.
+                \item[i)] pd. Si $a \in A$, entonces $[a] \neq \varnothing$. \\
+                Sea $a \in A$. Como la relación es reflexiva, sabemos que
+                $a \sim a$, por lo cual $a \in [a]$ y $a \neq \varnothing$.
+                
+                % Segunda propiedad.
+                \item[ii)] pd. Para cualesquiera $a, a' \in A$, si 
+                $[a] \neq [a']$ entonces $[a] \cap [a'] = \varnothing$. \\
+                Sean $a, a' \in A$. Supongamos que $[a] \neq [a']$, de donde
+                tenemos que $a \nsim a'$, y por lo tanto 
+                $[a] \cap [a'] = \varnothing$.
+                
+                % Tercera propiedad.
+                \item[iii)] pd. Para toda $a \in A$, existe $a' \in A$ tal que 
+                $a \in [a']$. \\
+                Usando el inciso $i)$ de esta demostración vemos que para toda
+                $a \in A$, existe $a$ misma tal que $a \in [a]$.
+                
+            \end{itemize}
+            
+            Con lo anterior probamos que toda relación de equivalencia induce
+            una partición. \\ \\
+            Ahora, veamos que toda partición induce una relación de
+            equivalencia. Sean $A \neq \varnothing$ y $P = \{A_{i}$ $|$ 
+            $i \in I \}$ una partición de $A$. Definimos la siguiente 
+            relación $\sim_{p}$ sobre $A$: $a \sim_{p} b$ si y sólo si existe
+            $i \in I$ tal que $a \in A_{i}$ y $b \in A_{i}$. Veamos que 
+            $\sim_{p}$ es una relación de equivalencia.
+            
+            \begin{itemize}
+                
+                % Primera propiedad.
+                \item[i)] Reflexividad. Sea $a \in A$. Como $\{A_{i}$ $|$
+                $i \in I\}$ es una partición de $A$, existe $i \in I$ tal que
+                $a \in A_{i}$. Así, $a \in A_{i}$ y $a \in A_{i}$. Entonces
+                $a \sim_{p} a$ y por lo tanto $\sim_{p}$ es reflexiva.
+                
+                % Segunda propiedad.
+                \item[ii)] Simetría. Sean $a, b \in A$ tales que $a \sim_{p} b$.
+                Por definición, existe $i \in I$ tal que $a \in A_{i}$ y
+                $b \in A_{i}$. Pero entonces existe $i \in I$ tal que 
+                $b \in A_{i}$ y $a \in A_{i}$, por lo que $b \sim_{p} a$. Así,
+                $\sim_{p}$ es simétrica.
+                
+                % Tercera propiedad.
+                \item[iii)] Transitividad. Sean $a, b, c \in A$ tales que 
+                $a \sim_{p} b$ y $b \sim_{p} c$. Entonces, por definición, 
+                existen $i, j \in I$ tales que $a \in A_{i}$, $b \in A_{i}$ y
+                $b \in A_{j}$, $c \in A_{j}$, respectivamente. Como
+                $b \in A_{i}$ y $b \in A_{j}$, entonces 
+                $A_{i} \cap A_{j} \neq \varnothing$. Así, por la contrapositiva
+                de la segunda condición de una partición, tenemos que 
+                $A_{i} = A_{j}$. Luego, existe $i \in I$ tal que $a \in A_{i}$
+                y $c \in A_{i}$. Por lo tanto, $a \sim_{p} c$, y $\sim_{p}$ es
+                transitiva.
+                
+            \end{itemize}
+            
+            Por lo tanto, $\sim_{p}$ es una relación de equivalencia sobre $A$.
+
+        \end{proof}
+        
+        % Ejercicio 10.
+        \item Enuncia el principio de inducción matemática para números
+        natuales. \\
+        \textsc{Solución:\\} 
+        Si  $A \subseteq \mathbb{N}$ y cumple que
+        
+        \begin{itemize}
+            \item[i)] $0 \in A$
+            \item[ii)] $\forall n \in \mathbb{N}(n \in A \Rightarrow$ 
+            $s(n) \in A)$
+        \end{itemize}
+        
+        entonces $A = \mathbb{N}$.
+        
+        % Ejercicio 11.
+        \item Utilizando inducción matemática demuestra lo siguiente:
+       
+        \begin{itemize}
+            
+            % Demostración 11.1
+            \item $\forall n \in \mathbb{N}$, $n^{2} + n + 1$ es impar.
+            
+            \begin{proof}
+                Inducción sobre $n$. 
+                
+                % Base de inducción.
+                \textbf{Base de inducción.} Si $n = 0$, entonces 
+                $0^{2} + 0 + 1 = 1$, el cual es claramente impar pues
+                $1 = 2(0) + 1$. \\ 
+                
+                % Hipótesis de inducción.
+                \textbf{Hipótesis de inducción.} Supongamos que 
+                $n^{2} + n + 1$ es impar, es decir, que existe 
+                $s \in \mathbb{N}$ tal que $n^{2} + n + 1 = 2s + 1$. \\
+                
+                % Paso inductivo.
+                \textbf{Paso inductivo.} Queremos mostrar que existe
+                $t \in \mathbb{N}$ tal que $(n + 1)^{2} + n + 2 = 2t + 1$. \\
+                Efectuando las operaciones adecuadas tenemos que 
+                $(n + 1)^{2} + n + 2 = (n^{2} + 2n + 1) + n + 2$. Reagrupando
+                obtenemos que $(n^{2} + n + 1) + 2n + 2$. Así, aplicando la 
+                hipótesis de inducción tenemos que  $(2s + 1) + 2n + 2 =$
+                $2(s + (n + 1)) + 1$. Por lo tanto, si tomamos $t = s + (n + 1)$
+                obtenemos que existe $t \in \mathbb{N}$ tal que 
+                $(n + 1)^{2} + n + 2 = 2t + 1$.
+                
+            \end{proof}
+            
+            % Demostración 11.2
+            \item Si $|A|= n$, entonces $\mathcal{P}(A) = 2^{n}$.
+            
+            \begin{proof}
+                Inducción sobre $n$. 
+                
+                % Base de inducción.
+                \textbf{Base de inducción.} Si $|A| = 0$ entonces 
+                $A = \varnothing$, de donde tenemos que 
+                $\mathcal{P}(\varnothing) = \{\varnothing\}$ y así
+                $|\mathcal{P}(\varnothing)| = 2^{0} = 1$.
+                
+                % Hipótesis de inducción.
+                \textbf{Hipótesis de inducción.} Supongamos que se cumple para
+                $n = k > 0$ y designamos por $A$ a un conjunto de cardinalidad
+                $k + 1$.
+                
+                % Paso inductivo. 
+                \textbf{Paso inductivo.} Sea $x \in A$ un elemento arbitrario.
+                Es claro que $|A - \{x\}| = k$ y aplicando la hipótesis de 
+                inducción tenemos que $|\mathcal{P}(A - \{x\})| = 2^{k}$.
+                Ahora, dado cualquier subconjunto $B \in \mathcal{P}(A)$
+                obtenemos un subconjunto de $A - \{x\}$ si pasó una y sólo una
+                de las siguientes dos cosas:
+                
+                \begin{itemize}
+                    \item[i)] $B$ permaneció inalterado en $A - \{x\}$; i.e.
+                    $x$ no era un elemento de $B$.
+                    
+                    \item[ii)]$B$ proviene de cierto conjunto 
+                    $B' = B \cup \{x\}$; i.e. $x$ era un elemento de $B$.
+                \end{itemize}
+                
+                Conforme hacemos variar a los subconjuntos de $A$ de acuerdo
+                con las opciones anteriores obtenemos a todos los subconjuntos
+                de $A - \{x\}$. En consecuencia obtenemos finalmente que 
+                $|\mathcal{P}(A)| = 2 \cdot |\mathcal{P}(A - \{x\})| = 2$
+                $\cdot 2^{k} = 2^{k + 1}$. 
+
+            \end{proof}
+            
+            % Ejercicio 11.3
+            \item Si $n \geq 5$, entonces $n^{2} < 2^{n}$.
+            
+            \begin{proof}
+                Inducción sobre $n$. 
+                
+                % Base de inducción.
+                \textbf{Base de inducción.} Como $5^{2} = 25$ y $2^{5} = 32$,
+                tenemos que $5^{2} = 25 < 32 = 2^{5}$.
+                
+                % Hipótesis de inducción.
+                \textbf{Hipótesis de inducción.} Sea $n \geq 5$ y supongamos
+                que $n^{2} < 2^{n}$.
+                
+                % Paso inductivo.
+                \textbf{Paso inductivo.} Queremos mostrar que 
+                $(n + 1)^{2} < 2^{n + 1}$. \\
+                Tenemos que $2^{n + 1} = 2 \cdot 2^{n} > 2 \cdot n^{2}$ por
+                hipótesis de inducción. Luego, $2^{n + 1} = 2 \cdot 2^{n} > 2$ 
+                $\cdot n^{2} > n^{2} + n^{2} > n^{2} + n$ 
+                $\cdot n > n^{2} + 4n$ pues remplazamos a $n$ con 4 ya que 
+                $n > 4$. Entonces $2^{n + 1} = 2 \cdot 2^{n} > 2 $
+                $\cdot n^{2} > n^{2} + n^{2} > n^{2} + n $ 
+                $\cdot n > n^{2} + 4n > n^{2} + 2n +2n > n^{2} + 2n +1$ pues
+                $2n > 1$  ya que $n > 4$. Por lo tanto $2^{n + 1} = 2 $
+                $\cdot 2^{n} > 2 \cdot n^{2} > n^{2} + n^{2} > n^{2} + n$
+                $\cdot n > n^{2} + 4n > n^{2} + 2n +2n > n^{2} + 2n + 1 $
+                $ > (n + 1)^{2}\) que es lo que se quería probar.
+                
+            \end{proof}
+            
+            % Ejercicio 11.4
+            \item Si $n \geq 4$, entonces $2^{n} < n!$
+            
+            \begin{proof}
+                Inducción sobre $n$.
+                
+                % Base de inducción. 
+                \textbf{Base de inducción.} Como $2^{4} = 16$ y $4! = 24$, 
+                entonces $2^{4} = 16 < 24 = 4!$.
+                
+                % Hipótesis de inducción.
+                \textbf{Hipótesis de inducción.} Sea $n \geq 4$ y supongamos
+                que $2^{n} < n!$.
+                
+                % Paso inductivo.
+                \textbf{Paso inductivo.} Queremos mostrar que 
+                $2^{n + 1} < (n + 1)!$ \\
+                Como $n \geq 4$ tenemos que $2 < n + 1$. Además, por hipótesis
+                de inducción, $2^{n} < n!$. Entonces $2^{n} \cdot 2 < $
+                $n! \cdot (n + 1)$. Por lo tanto, $2^{n + 1} < (n + 1)!$
+                
+            \end{proof}
+        
+        \end{itemize}
+    
+    \end{enumerate}
+
+\end{document}
